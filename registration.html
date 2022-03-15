@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Yixuan Liu">
+    <title>registration</title>
+  </head>
+
+  <body>
+<script>
+function myFunction() {
+  function timestampToTime(timestamp) {
+    var date = new Date(timestamp); 
+    Y = date.getFullYear() + '-';
+    M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+    D = date.getDate() + ' ';
+    h = date.getHours() + ':';
+    m = date.getMinutes() + ':';
+    s = date.getSeconds();
+    return Y + M + D + h + m + s;
+  }
+  var ts = (new Date()).valueOf();
+  var a = timestampToTime(ts);
+  return a;
+  /*alert(a);*/
+}
+window.onload = function(){
+		document.getElementById('ts1').value = myFunction(); // 返回的值
+	}
+
+function checkName() {
+  var reg = /^[a-zA-z][a-zA-Z0-9]{2,}$/;
+  if (el.value.search(reg) == -1) {
+    alert("Only letters and numbers larger than three characters are acceptable! It may not start with a number!")
+  }
+}
+
+function checkZip() {
+  var reg = /^[0-9]{5}$/;
+  if (zip.value.search(reg) == -1) {
+    alert("Only 5-digit zip code are acceptable!")
+  }
+}
+
+function checkpw1() {
+  var reg = /^[a-zA-Z0-9]{8,16}$/;
+  if (inputp1.value.search(reg) == -1) {
+    alert("Only letters and number between 8-16 digit are acceptable!")
+  }
+}
+
+function check2pwd() {
+  if (inputp1.value != inputp2.value) {
+    alert("The two passwords you typed do not match!")
+    inputp1.value = ""
+    inputp2.value = ""
+  }
+}
+
+function age() {
+  var elems = document.getElementById("date").value.split('-'),
+
+    today = new Date(),
+    year = today.getFullYear(),
+    month = today.getMonth(),
+    day = today.getDate()
+  if (+elems[2] + 18 > year) {
+    {
+      alert("You are not of legal age to register!")
+
+    }
+
+  } else {
+    if ((+elems[2] + 18 == year + 1) && (+elems[1] > month)) {
+      alert("You are not of legal age to register!")
+
+    } else if ((+elems[2] + 18 == year + 1) && (+elems[1] == month) && (+elems[0] > day)) {
+      alert("You are not of legal age to register!")
+    }
+  }
+}
+
+</script>
+  
+    <form action="processor.html" method="get">
+    <input type="hidden"name="times" id="ts1">
+      Account Name<br>
+      <input type="text" name="aname" placeholder="your account name" id="el" onchange="checkName()" required  pattern=^[a-zA-Z][a-zA-Z0-9]{2,}$ >
+      <br>
+      Display Name<br>
+      <input type="text" name="dname" placeholder="your display name"><br>
+      Email Address<br>
+      <input type="text" name="email" placeholder="your display name" required pattern=^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$>
+      <br>
+      Date of Birth<br>
+      <input type="text" name="dob" placeholder="MM-DD-YY" required id="date" pattern=^(0[1-9]|1[0-2])-(0[1-9]|1[0-9]|2[0-9]|3[0-1])-[0-9]{4}$ onchange="age()" required>
+      <br>
+      Zip code<br>
+      <input type="text" name="zip" id="zip"placeholder="your zip code" onchange="checkZip()" required pattern=^[0-9]{5}$ required>
+      <br>
+      Phone number:(1231231234)<br>
+      <input type="text" name="pn" placeholder="1231231234" pattern=^[0-9]{10}$ required>
+      <br>
+      Password<br>
+      <input type="password" name="pw1"  id="inputp1" placeholder="enter your password" size="30" pattern=^[a-zA-Z0-9]{8,16}$ onblur="checkpw1()"required>
+      <br>
+      Password Confirmation<br>
+      <input type="password" name="pw2" id="inputp2" placeholder="enter your password again to confirm" size="30" pattern=^[a-zA-Z0-9]{8,16}$ onblur="check2pwd()" required>
+      <br>
+      <input type="submit" value="register" >
+      <input type="reset" value="Clear">
+    </form>
+  </body>
+
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+   <head>
+     <meta http-equiv=Content-Type content="text/html;charset=utf-8">
+     <title>processor</title>
+     
+   </head>
+
+   <body>
+<script type="text/javascript">
+       var getQueryString = function(name) {
+         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+         var r = window.location.search.substr(1).match(reg);
+         if (r != null) return r[2];
+         return "";
+       }
+       function geta() {
+         return (getQueryString("aname"))
+       }
+ 
+       function getb() {
+         return (getQueryString("dname"))
+       }
+
+       function getc() {
+         return (getQueryString("email"))
+       }
+
+       function getd() {
+         return (getQueryString("dob"))
+       }
+
+       function gete() {
+         return (getQueryString("zip"))
+       }
+
+       function getf() {
+         return (getQueryString("pw1"))
+       }
+       function getg() {
+         return (getQueryString("times"))
+       }
+       window.onload = function() {
+         document.getElementById('an1').value = geta(); // 返回的值
+         document.getElementById('dn1').value = getb(); // 返回的值
+         document.getElementById('em1').value = getc(); // 返回的值
+         document.getElementById('dob1').value = getd(); // 返回的值
+         document.getElementById('zip1').value = gete(); // 返回的值
+         document.getElementById('pw11').value = getf(); // 返回的值
+         document.getElementById('ts1').value = getg();   
+       }
+
+     </script>
+   <table>
+     <tr>
+       <td>Account name:
+       </td>
+       <td>
+    <input type="text" id="an1">
+       </td>
+     </tr>
+     <tr>
+       <td>Display Name:
+       </td>
+       <td><input type="text" id="dn1">
+       </td>
+     </tr>
+     <tr>
+       <td>Email:
+       </td>
+       <td><input type="text" id="em1">
+       </td>
+     </tr>
+     <tr>
+       <td>Date of Birth:
+       </td>
+       <td><input type="text" id="dob1">
+       </td>
+     </tr>
+     <tr>
+       <td>Zip Code:
+       </td>
+       <td><input type="text" id="zip1">
+       </td>
+     </tr>
+     <tr>
+       <td>
+       </td>
+       <td><input type="password" id="pw11">
+       </td>
+     </tr>
+       <td>Timestamp:
+       </td>
+       <td><input type="text" id="ts1">
+       </td>
+     </tr>
+     </table>
+   </body>
+
+ </html>
